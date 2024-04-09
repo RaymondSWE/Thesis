@@ -31,6 +31,12 @@ histogram_quantile(0.95, sum(irate(osm_request_duration_ms_bucket{destination_na
 ``` 
 This calculation identifies the 95th percentile of request webui latency by averaging the response times over a 1-minute window. Indicating that 95% of requests are processed within this threshold, with only 5% exceeding it. 
 
+#### Real-Time Visualization with Grafana
+strongly recommended to utilize the three queries mentioned above within the Grafana UI. This approach enables you to view graphs in real time, offering valuable insights into the software's performance during testing.
+![Grafana](/img/grafana-3.png)
+
+
+
 ### Benchmark
 In each **results** folder, you will find the benchmark file that was used for the assessment. At the end of the benchmark file, you will find the SLO (Service Level Objective) defined, which determines whether the resource capacity should be increased or the resource demand should be increased. If the resource does not meet the SLO, then the resource capacity will be increased, otherwise, the load capacity will be increased.
 
