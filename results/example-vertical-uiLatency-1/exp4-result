@@ -1,0 +1,74 @@
+{
+  "metric": "DEMAND",
+  "results": [
+    [
+      {
+        "first": 1,
+        "second": 500
+      },
+      true
+    ],
+    [
+      {
+        "first": 3,
+        "second": 500
+      },
+      false
+    ],
+    [
+      {
+        "first": 3,
+        "second": 1000
+      },
+      false
+    ],
+    [
+      {
+        "first": 3,
+        "second": 1500
+      },
+      false
+    ],
+    [
+      {
+        "first": 3,
+        "second": 2000
+      },
+      true
+    ],
+    [
+      {
+        "first": 5,
+        "second": 2000
+      },
+      true
+    ],
+    [
+      {
+        "first": 7,
+        "second": 2000
+      },
+      false
+    ],
+    [
+      {
+        "first": 7,
+        "second": 2500
+      },
+      false
+    ],
+    [
+      {
+        "first": 7,
+        "second": 2800
+      },
+      false
+    ]
+  ],
+  "optInstances": {
+    "1": 500,
+    "3": 2000,
+    "5": 2000,
+    "7": 2147483647
+  }
+}
