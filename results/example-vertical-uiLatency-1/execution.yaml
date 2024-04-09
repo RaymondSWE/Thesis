@@ -21,6 +21,6 @@ spec:
       restrictions:
         - "LowerBound"
       searchStrategy: "LinearSearch"
-    duration: 600  # in seconds
+    duration: 1200  # in seconds
     repetitions: 1
   configOverrides: []
