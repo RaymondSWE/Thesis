@@ -5,6 +5,7 @@ This project analyzes vertical and horizontal scaling strategies in cloud-native
 ## Requirements
 - For local testing, it is recommended to start with Minikube and then move on to Kind to familiarize yourself with worker/manager roles and kubectl commands. A configuration file for creating a multi-node cluster exists inside the help folder of this repository.
 - Deployment for these test happend via **Digital Ocean Kubernetes**, with the deployment managed by abstract infrastrucutre (PaaS). Each node had 4 vCPU and 8GB ram, a total of **40 vCPU** and **80GB ram**.
+- Basic knowledge of the Software under test (SUT) is recommended, this repository will use **Teastore**
 
 ###  Prometheus Query Language 
 To address our research question, we focus on three key SLOs: **Throughput**, **Latency**, and **UILatency**. These metrics serve as indicators of an application's performance and reliability, providing a basis for comparing scaling strategies.
