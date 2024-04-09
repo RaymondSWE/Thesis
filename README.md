@@ -97,8 +97,9 @@ This is an example execution configuration that showcases an approach to assess 
 
 The **RestrictionSearch** strategy, uses the **LowerBound** restriction. Which systematically searches for the lowest resource configuration that satisfies the SLO criteria. It utilizes a **LinearSearch** methodology, iterating through each resource levels and user counts, executing each test for 1200 seconds. If the SLO is fulfilled and true, then the resource demands decrease otherwise, resource capacity will increase.
 
+## References
 
-
-
+- Theodolite framework [Github Link](https://github.com/SoerenHenning/theodolite)
+- Software under test: Teastore [Github Link](https://github.com/SoerenHenning/TeaStore)
 
 
