@@ -1,0 +1,108 @@
+apiVersion: monitoring.coreos.com/v1
+kind: PodMonitor
+metadata:
+  name: envoy-pod-monitor
+spec:
+  selector:
+    matchLabels:
+      app: teastore
+  podMetricsEndpoints:
+  - targetPort: 15010
+    path: /stats/prometheus
+    interval: 10s
+    metricRelabelings:
+    # - sourceLabels: [__name__] 
+    #   regex: '(envoy_server_live|envoy_cluster_health_check_.*|envoy_cluster_upstream_rq_xx|envoy_cluster_upstream_cx_active|envoy_cluster_upstream_cx_tx_bytes_total|envoy_cluster_upstream_cx_rx_bytes_total|envoy_cluster_upstream_rq_total|envoy_cluster_upstream_cx_destroy_remote_with_active_rq|envoy_cluster_upstream_cx_connect_timeout|envoy_cluster_upstream_cx_destroy_local_with_active_rq|envoy_cluster_upstream_rq_pending_failure_eject|envoy_cluster_upstream_rq_pending_overflow|envoy_cluster_upstream_rq_timeout|envoy_cluster_upstream_rq_rx_reset|envoy_cluster_upstream_rq_retry.*|^osm.*)' 
+    #   action: keep 
+    - action: keep
+      sourceLabels: [__name__]
+      regex: 'envoy_.*osm_request_(total|duration_ms_(bucket|count|sum))'
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_response_code_(\d{3})_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_total
+      targetLabel: response_code
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_response_code_\d{3}_source_namespace_(.*)_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_total
+      targetLabel: source_namespace
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_response_code_\d{3}_source_namespace_.*_source_kind_(.*)_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_total
+      targetLabel: source_kind
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_response_code_\d{3}_source_namespace_.*_source_kind_.*_source_name_(.*)_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_total
+      targetLabel: source_name
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_response_code_\d{3}_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_(.*)_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_total
+      targetLabel: source_pod
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_response_code_\d{3}_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_(.*)_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_total
+      targetLabel: destination_namespace
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_response_code_\d{3}_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_(.*)_destination_name_.*_destination_pod_.*_osm_request_total
+      targetLabel: destination_kind
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_response_code_\d{3}_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_(.*)_destination_pod_.*_osm_request_total
+      targetLabel: destination_name
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_response_code_\d{3}_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_(.*)_osm_request_total
+      targetLabel: destination_pod
+    - sourceLabels: [__name__]
+      action: replace
+      regex: .*(osm_request_total)
+      targetLabel: __name__
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_source_namespace_(.*)_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_duration_ms_(bucket|sum|count)
+      targetLabel: source_namespace
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_source_namespace_.*_source_kind_(.*)_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_duration_ms_(bucket|sum|count)
+      targetLabel: source_kind
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_source_namespace_.*_source_kind_.*_source_name_(.*)_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_duration_ms_(bucket|sum|count)
+      targetLabel: source_name
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_(.*)_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_duration_ms_(bucket|sum|count)
+      targetLabel: source_pod
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_(.*)_destination_kind_.*_destination_name_.*_destination_pod_.*_osm_request_duration_ms_(bucket|sum|count)
+      targetLabel: destination_namespace
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_(.*)_destination_name_.*_destination_pod_.*_osm_request_duration_ms_(bucket|sum|count)
+      targetLabel: destination_kind
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_(.*)_destination_pod_.*_osm_request_duration_ms_(bucket|sum|count)
+      targetLabel: destination_name
+    - sourceLabels: [__name__]
+      action: replace
+      regex: envoy_source_namespace_.*_source_kind_.*_source_name_.*_source_pod_.*_destination_namespace_.*_destination_kind_.*_destination_name_.*_destination_pod_(.*)_osm_request_duration_ms_(bucket|sum|count)
+      targetLabel: destination_pod
+    - sourceLabels: [__name__]
+      action: replace
+      regex: .*(osm_request_duration_ms_(bucket|sum|count))
+      targetLabel: __name__
+#---
+# apiVersion: monitoring.coreos.com/v1
+# kind: PodMonitor
+# metadata:
+#   name: envoy-pod-monitor-default
+# spec:
+#   selector:
+#     matchLabels:
+#       app: teastore
+#   podMetricsEndpoints:
+#   - targetPort: 15010
+#     path: /stats/prometheus
+#     interval: 10s
