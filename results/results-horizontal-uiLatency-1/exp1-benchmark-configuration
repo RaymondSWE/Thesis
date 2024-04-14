@@ -160,7 +160,7 @@
   ],
   "slos": [
     {
-      "name": "throughput",
+      "name": "uiLatency",
       "sloType": "generic",
       "prometheusUrl": "http://prometheus-operated:9090",
       "offset$delegate": {
@@ -168,11 +168,11 @@
       },
       "properties": {
         "externalSloUrl": "http://localhost:8082",
-        "operator": "gte",
-        "promQLQuery": "sum(rate(osm_request_total[1m]))",
+        "operator": "lte",
+        "promQLQuery": "histogram_quantile(0.95,sum(irate(osm_request_duration_ms_bucket{destination_name\u003d\u0027teastore_webui\u0027}[1m])) by (le, destination_name))",
         "queryAggregation": "mean",
         "repetitionAggregation": "median",
-        "threshold": "150",
+        "threshold": "200",
         "warmup": "600"
       }
     }

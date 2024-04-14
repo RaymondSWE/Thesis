@@ -1,6 +1,6 @@
 {
   "executionId": 1,
-  "name": "teastore-hori-2",
+  "name": "teastore-horizontal-3",
   "benchmark": "teastore",
   "load": {
     "loadType": "NumUsers",
@@ -15,25 +15,30 @@
       15,
       17,
       19,
-      21
+      21,
+      23,
+      25,
+      27,
+      29,
+      31,
+      33,
+      35
     ]
   },
   "resources": {
-    "resourceType": "PodResources",
+    "resourceType": "Instances",
     "resourceValues": [
-      500,
-      1000,
-      1500,
-      2000,
-      2500,
-      2800
+      1,
+      2,
+      3,
+      4
     ]
   },
   "slos": [
     {
-      "name": "throughput",
+      "name": "uiLatency",
       "properties": {
-        "threshold": "150",
+        "thresholdFromExpression": "200",
         "warmup": "600"
       }
     }
@@ -66,7 +71,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -76,7 +81,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -86,7 +91,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -96,7 +101,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -106,7 +111,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -116,7 +121,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -126,7 +131,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -136,7 +141,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -146,7 +151,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -156,7 +161,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -166,7 +171,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -176,7 +181,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -186,7 +191,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -196,7 +201,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
@@ -206,7 +211,7 @@
           "variableName": "deployed-for-execution"
         }
       },
-      "value": "teastore-hori-2"
+      "value": "teastore-horizontal-3"
     },
     {
       "patcher": {
