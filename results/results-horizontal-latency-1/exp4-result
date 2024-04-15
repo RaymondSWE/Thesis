@@ -1,0 +1,60 @@
+{
+  "metric": "DEMAND",
+  "results": [
+    [
+      {
+        "first": 1,
+        "second": 1
+      },
+      false
+    ],
+    [
+      {
+        "first": 1,
+        "second": 2
+      },
+      true
+    ],
+    [
+      {
+        "first": 3,
+        "second": 2
+      },
+      true
+    ],
+    [
+      {
+        "first": 5,
+        "second": 2
+      },
+      false
+    ],
+    [
+      {
+        "first": 5,
+        "second": 3
+      },
+      false
+    ],
+    [
+      {
+        "first": 5,
+        "second": 4
+      },
+      true
+    ],
+    [
+      {
+        "first": 7,
+        "second": 4
+      },
+      false
+    ]
+  ],
+  "optInstances": {
+    "1": 2,
+    "3": 2,
+    "5": 4,
+    "7": 2147483647
+  }
+}
