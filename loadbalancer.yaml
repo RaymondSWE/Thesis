@@ -3,7 +3,7 @@ kind: Service
 metadata:
   name: nginx
   annotations:
-    service.beta.kubernetes.io/do-loadbalancer-size-unit: "1" # My account is limited to 6 load balancers
+    service.beta.kubernetes.io/do-loadbalancer-size-unit: "6" # My account is limited to 6 load balancers
     service.beta.kubernetes.io/do-loadbalancer-disable-lets-encrypt-dns-records: "false"
 spec:
   type: LoadBalancer
